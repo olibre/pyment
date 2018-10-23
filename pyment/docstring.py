@@ -1237,7 +1237,7 @@ class DocString(object):
                 'return': None,
                 'rtype': None,
                 'raises': [],
-                'spaces': spaces + ' ' * 2
+                'spaces': spaces + ' ' * kwargs.get('indent', 2)
                 }
             }
         if '\t' in spaces:
