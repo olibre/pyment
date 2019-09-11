@@ -155,6 +155,16 @@ class IssuesTests(unittest.TestCase):
         self.assertTrue(result == '')
 
     @unittest.expectedFailure
+    def testIssue38(self):
+        # Title: existing class docstrings should not get empty Args: and Returns: sections
+        expected = ''''''
+        p = pym.PyComment(absdir('issue38.py'), output_style='google')
+        p._parse()
+        self.assertTrue(p.parsed)
+        result = ''.join(p.diff())
+        self.assertTrue(result == expected)
+
+    @unittest.expectedFailure
     def testIssue46(self):
         # Title: list, tuple, dict default param values are not parsed correctly
         # if a list/tuple/dict is given as default value for a parameter, the
