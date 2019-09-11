@@ -214,6 +214,17 @@ class IssuesTests(unittest.TestCase):
         result = ''.join(p.diff())
         self.assertTrue(result == '')
 
+    def testIssue49(self):
+        # Title: If already numpydoc format, will remove the Raises section
+        # If the last section in a numpydoc docstring is a `Raises` section,
+        # it will be removed if the output format is also set to numpydoc
+        p = pym.PyComment(absdir('issue49.py'), output_style='numpydoc')
+        p._parse()
+        self.assertTrue(p.parsed)
+        result = ''.join(p.diff())
+        print(result)
+        self.assertTrue(result == '')
+
     def testIssue58(self):
         # Title: Comments after def statement not supported
         # If a function's def statement is followed by a comment it won't be proceeded.

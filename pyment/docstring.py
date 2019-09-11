@@ -368,6 +368,14 @@ class NumpydocTools(DocToolsBase):
         :param key: the key
 
         """
+        # key_list = []
+        # data = data.splitlines()
+        # init = self.get_section_key_line(data, key)
+        # if init == -1:
+        #     return []
+        # start, end = self.get_next_section_lines(data[init:])
+        # if end == -1 and start != end:
+        #     end = len(data[init:])
         return super(NumpydocTools, self).get_list_key(data, key, header_lines=header_lines)
 
     def _get_list_key(self, spaces, lines):
